@@ -73,10 +73,9 @@ public class Biblioteca {
         // Bubble Sort para ordenar a lista de livros com base na média de avaliações
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                double mediaLivroAtual = livros.get(j).getAvaliacoes().stream().mapToDouble(Avaliacao::getQtdEstrelas).average().orElse(0);
-                double mediaProximoLivro = livros.get(j + 1).getAvaliacoes().stream().mapToDouble(Avaliacao::getQtdEstrelas).average().orElse(0);
+                Double mediaLivroAtual = livros.get(j).getAvaliacoes().stream().mapToDouble(Avaliacao::getQtdEstrelas).average().orElse(0);
+                Double mediaProximoLivro = livros.get(j + 1).getAvaliacoes().stream().mapToDouble(Avaliacao::getQtdEstrelas).average().orElse(0);
 
-                // Verifica se o livro atual tem média menor que o próximo livro
                 if (mediaLivroAtual < mediaProximoLivro) {
                     // Faz a troca
                     aux = livros.get(j);
@@ -85,14 +84,6 @@ public class Biblioteca {
                 }
             }
         }
-
-        // Retorna os cinco primeiros livros, ou todos se houver menos de 5
         return livros.size() > 5 ? livros.subList(0, 5) : livros;
     }
-
 }
-//        return livros.stream()
-//                .sorted((l1, l2) -> Double.compare(l2.calcularMediaAvaliacoes(),
-//                        l1.calcularMediaAvaliacoes()))
-//                .limit(5)
-//                .collect(Collectors.toList());

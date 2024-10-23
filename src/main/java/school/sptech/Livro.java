@@ -8,7 +8,7 @@ public class Livro {
     private String titulo;
     private String autor;
     private LocalDate dataPublicacao;
-    private static List<Avaliacao> avaliacoes;
+    private List<Avaliacao> avaliacoes;
 
     public Livro() {
         avaliacoes = new ArrayList<>();
@@ -56,7 +56,7 @@ public class Livro {
         }
     }
 
-    public static Double calcularMediaAvaliacoes() {
+    public Double calcularMediaAvaliacoes() {
         if (avaliacoes.isEmpty()) {
             return 0.0;
         }
